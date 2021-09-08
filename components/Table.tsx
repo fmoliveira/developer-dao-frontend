@@ -48,15 +48,13 @@ type TableBodyProps = {
 };
 
 function TableBody({ data, columnList }: TableBodyProps) {
-	const { rowList, isCapped } = useRowList(data);
-
 	return (
 		<tbody className="bg-white divide-y divide-gray-200">
-			{rowList.map((row) => (
+			{data.map((row) => (
 				<tr key={row.id}>
 					{columnList.map((column) => (
 						<td
-							key={getKey(row, column)}
+							key={`${row.id}_${column}`}
 							className="px-3 py-1 whitespace-nowrap"
 						>
 							{row[column]}
@@ -64,30 +62,6 @@ function TableBody({ data, columnList }: TableBodyProps) {
 					))}
 				</tr>
 			))}
-			{isCapped && (
-				<tr>
-					<td
-						colSpan={columnList.length}
-						className="p-3 text-gray-600 text-center"
-					>
-						Only first {rowList.length} results are shown
-					</td>
-				</tr>
-			)}
 		</tbody>
 	);
-}
-
-function useRowList(data: Row[] = []) {
-	const MAX_ROW_COUNT = 100;
-
-	const rowList = data.slice(0, MAX_ROW_COUNT);
-	const isCapped = rowList.length < data.length;
-
-	return { rowList, isCapped };
-}
-
-function getKey(row: Row, column: string) {
-	const cell = row[column];
-	return [column, cell].join("_");
 }
