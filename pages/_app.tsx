@@ -1,5 +1,6 @@
 import Head from "next/head";
 import "tailwindcss/tailwind.css";
+
 import RequestProvider from "../components/RequestProvider";
 
 export default function MyApp({ Component, pageProps }) {
@@ -36,7 +37,9 @@ export default function MyApp({ Component, pageProps }) {
 				<meta name="theme-color" content="#ffffff" />
 			</Head>
 			<RequestProvider>
-				<Component {...pageProps} />
+				<div className="p-4">
+					<Component {...pageProps} />
+				</div>
 			</RequestProvider>
 		</>
 	);

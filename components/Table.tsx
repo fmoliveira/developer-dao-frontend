@@ -10,11 +10,13 @@ export default function Table({ caption, data }: Props) {
 	const columnList = Object.keys(firstRow);
 
 	return (
-		<table className="w-full">
-			<caption>{caption}</caption>
-			<TableHeader columnList={columnList} />
-			<TableBody data={data} columnList={columnList} />
-		</table>
+		<div className="shadow overflow-hidden border border-gray-200 sm:rounded-lg">
+			<table className="min-w-full">
+				<caption className="sr-only">{caption}</caption>
+				<TableHeader columnList={columnList} />
+				<TableBody data={data} columnList={columnList} />
+			</table>
+		</div>
 	);
 }
 
@@ -24,10 +26,16 @@ type TableHeaderProps = {
 
 function TableHeader({ columnList }: TableHeaderProps) {
 	return (
-		<thead>
+		<thead className="bg-gray-50 border-b border-gray-200">
 			<tr>
 				{columnList.map((column) => (
-					<th key={column}>{column}</th>
+					<th
+						scope="col"
+						className="p-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+						key={column}
+					>
+						{column}
+					</th>
 				))}
 			</tr>
 		</thead>
@@ -43,17 +51,25 @@ function TableBody({ data, columnList }: TableBodyProps) {
 	const { rowList, isCapped } = useRowList(data);
 
 	return (
-		<tbody>
+		<tbody className="bg-white divide-y divide-gray-200">
 			{rowList.map((row) => (
 				<tr key={row.id}>
 					{columnList.map((column) => (
-						<td key={getKey(row, column)}>{row[column]}</td>
+						<td
+							key={getKey(row, column)}
+							className="px-3 py-1 whitespace-nowrap"
+						>
+							{row[column]}
+						</td>
 					))}
 				</tr>
 			))}
 			{isCapped && (
 				<tr>
-					<td colSpan={columnList.length}>
+					<td
+						colSpan={columnList.length}
+						className="p-3 text-gray-600 text-center"
+					>
 						Only first {rowList.length} results are shown
 					</td>
 				</tr>
