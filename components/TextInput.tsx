@@ -1,6 +1,7 @@
 type Props = {
 	id: string;
 	label: string;
+	hint?: string;
 	defaultValue?: string;
 	onChange: (value: string) => void;
 };
@@ -8,6 +9,7 @@ type Props = {
 export default function TextInput({
 	id,
 	label,
+	hint,
 	defaultValue,
 	onChange,
 }: Props) {
@@ -23,6 +25,7 @@ export default function TextInput({
 				defaultValue={defaultValue}
 				onChange={(event) => onChange(event.target.value)}
 			/>
+			{hint && <div className="text-sm text-gray-500">{hint}</div>}
 		</div>
 	);
 }

@@ -15,7 +15,12 @@ export default function DevelopersList() {
 
 	return (
 		<>
-			<TextInput id="filter" label="Filter" onChange={setFilter} />
+			<TextInput
+				id="filter"
+				label="Filter"
+				hint="Separate keywords with spaces, commas or semicolons"
+				onChange={setFilter}
+			/>
 			<div className="py-4">{totalResults}</div>
 			<Table
 				caption="List of developers by token id and attributes"
@@ -30,7 +35,7 @@ function getDevelopersList() {
 }
 
 function useFilteredList(data: any[] = [], filter: string) {
-	const keywordList = filter.toLowerCase().split(" ").filter(Boolean);
+	const keywordList = filter.toLowerCase().split(/[ ,;]/).filter(Boolean);
 
 	return data.filter((row) => {
 		const cellList: string[] = Object.values(row);
