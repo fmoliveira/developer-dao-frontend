@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useQuery } from "react-query";
+import useSWR from "swr";
+
 import Table from "./Table";
 import TextInput from "./TextInput";
 
 export default function DevelopersList() {
-	const developerQuery = useQuery("devs", getDevelopersList);
-	const availableTokensQuery = useQuery("available", getAvailableTokens);
+	const developerQuery = useSWR("/", getDevelopersList);
+	const availableTokensQuery = useSWR("available", getAvailableTokens);
 
 	const [filter, setFilter] = useState("");
 	const developerList = useDeveloperList(

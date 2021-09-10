@@ -1,8 +1,6 @@
 import Head from "next/head";
 import "tailwindcss/tailwind.css";
 
-import RequestProvider from "../components/RequestProvider";
-
 export default function MyApp({ Component, pageProps }) {
 	return (
 		<>
@@ -36,11 +34,9 @@ export default function MyApp({ Component, pageProps }) {
 				<meta name="msapplication-TileColor" content="#000000" />
 				<meta name="theme-color" content="#ffffff" />
 			</Head>
-			<RequestProvider>
-				<div className="p-4">
-					<Component {...pageProps} />
-				</div>
-			</RequestProvider>
+			<div className="p-4">
+				<Component {...pageProps} />
+			</div>
 		</>
 	);
 }
