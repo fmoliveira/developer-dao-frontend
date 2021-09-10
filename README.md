@@ -13,6 +13,11 @@ Backlog:
 - [ ] Click on an unclaimed token to mint it
 - [ ] Display your owned tokens with OpenSea API
 
+Second wave backlog:
+
+- [ ] SSG build of developers list
+- [ ] Request caching with Redis
+
 Future ideas:
 
 - [ ] Display estimated gas price using Etherscan API (similar to how ENS Domains do)
