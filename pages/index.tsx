@@ -1,5 +1,5 @@
-import CommunityLinks from "../components/CommunityLinks";
-import DevelopersList from "../components/DevelopersList";
+import CommunityLinks from "components/CommunityLinks";
+import DevelopersList from "components/DevelopersList";
 
 export default function Home() {
 	return (

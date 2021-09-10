@@ -1,6 +1,6 @@
 import { NextApiResponse } from "next";
 
-import getDeveloperTokens from "../../../lib/getDeveloperTokens";
+import getDeveloperTokens from "lib/getDeveloperTokens";
 
 const MIN_TOKEN = 1;
 const MAX_TOKEN = 8000;
