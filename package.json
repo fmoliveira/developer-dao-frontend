@@ -14,10 +14,12 @@
 		"*.{js,ts,tsx,html,css,json,md}": "prettier --write"
 	},
 	"dependencies": {
+		"@0xcert/ethereum-erc721": "^2.4.0",
 		"next": "11.1.2",
 		"react": "17.0.2",
 		"react-dom": "17.0.2",
-		"react-query": "^3.22.0"
+		"react-query": "^3.22.0",
+		"web3": "^1.5.2"
 	},
 	"devDependencies": {
 		"@types/react": "^17.0.20",
