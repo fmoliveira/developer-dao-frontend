@@ -1,8 +1,8 @@
 import { NextApiResponse } from "next";
 
-import getDeveloperTokens from "lib/getDeveloperTokens";
+import getTokenHolders from "lib/getTokenHolders";
 
 export default async function handler(req, res: NextApiResponse) {
-	const tokens = await getDeveloperTokens();
+	const tokens = await getTokenHolders();
 	res.status(200).json({ tokens });
 }

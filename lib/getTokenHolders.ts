@@ -6,7 +6,7 @@ const DEV_DAO_CONTRACT = process.env.DEV_DAO_CONTRACT;
 
 type DeveloperTokenList = Record<string, string>;
 
-export default async function getDeveloperTokens(): Promise<DeveloperTokenList> {
+export default async function getTokenHolders(): Promise<DeveloperTokenList> {
 	const provider = new Web3.providers.HttpProvider(INFURA_ENDPOINT);
 	const client = new Web3(provider);
 	const abi: any = NftReference.ERC721.abi;
