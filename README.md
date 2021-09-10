@@ -8,7 +8,7 @@ Backlog:
 
 - [x] List developer tokens and attributes from static file
 - [x] Allow filtering developers by attributes
-- [ ] Fetch and display claimed|unclaimed status for all rows (from what API?)
+- [x] Fetch and display claimed|unclaimed status for all rows from Infura API
 - [ ] Connect to Metamask wallet
 - [ ] Click on an unclaimed token to mint it
 - [ ] Display your owned tokens with OpenSea API
