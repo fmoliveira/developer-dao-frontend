@@ -2,11 +2,28 @@ import Modal from "./Modal";
 
 type Props = {
 	token: any;
+	details: any;
 	onClaim: (tokenId: string) => void;
 	onClose: () => void;
 };
 
-export default function DeveloperDetails({ token, onClaim, onClose }: Props) {
+const attributes = [
+	"os",
+	"textEditor",
+	"clothing",
+	"language",
+	"industry",
+	"location",
+	"mind",
+	"vibe",
+];
+
+export default function DeveloperDetails({
+	token,
+	details,
+	onClaim,
+	onClose,
+}: Props) {
 	const DeveloperClaimedFooter = () => (
 		<>
 			<button
@@ -57,7 +74,11 @@ export default function DeveloperDetails({ token, onClaim, onClose }: Props) {
 			}
 			onClose={onClose}
 		>
-			Developer
+			<ul>
+				{attributes.map((key) => (
+					<li key={key}>{details[key]}</li>
+				))}
+			</ul>
 		</Modal>
 	);
 }

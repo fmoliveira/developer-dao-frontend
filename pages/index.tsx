@@ -12,9 +12,9 @@ import useWallet from "hooks/useWallet";
 export default function Home() {
 	const { connectWallet } = useWallet();
 
-	const { setFilter, resultList, resultCount, visibleCount } =
+	const { setFilter, developerMap, resultList, resultCount, visibleCount } =
 		useDeveloperSearch();
-	const [token, selectToken] = useState("");
+	const [token, selectToken] = useState(null);
 
 	const handleClaim = () => {};
 
@@ -32,6 +32,7 @@ export default function Home() {
 			{token && (
 				<DeveloperDetails
 					token={token}
+					details={developerMap.get(token.id)}
 					onClaim={handleClaim}
 					onClose={() => selectToken("")}
 				/>

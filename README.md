@@ -10,7 +10,8 @@ Backlog:
 - [x] Allow filtering developers by attributes
 - [x] Fetch and display claimed|unclaimed status for all rows from Infura API
 - [x] Connect to Metamask wallet
-- [ ] Click on an unclaimed token to mint it
+- [x] Click on a token to view details
+- [ ] Mint selected token
 - [ ] Display your owned tokens with Infura API
 
 Second wave backlog:
