@@ -12,14 +12,7 @@ export default function DevelopersList({ onClick }: Props) {
 		useDeveloperSearch();
 
 	const handleClick = (item: any) => {
-		const { id, available } = item;
-		if (available) {
-			if (window.confirm(`Do you want to claim the token ${id}?`)) {
-				onClick?.(id);
-			}
-		} else {
-			window.alert(`The token ${id} is already claimed!`);
-		}
+		onClick?.(item);
 	};
 
 	const resultsMessage =
