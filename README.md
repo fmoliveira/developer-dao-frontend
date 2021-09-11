@@ -12,6 +12,7 @@ Backlog:
 - [ ] Connect to Metamask wallet
 - [ ] Click on an unclaimed token to mint it
 - [ ] Display your owned tokens with Infura API
+- [ ] Improve search performance with Fuse.js
 
 Second wave backlog:
 
