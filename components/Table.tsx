@@ -57,7 +57,7 @@ function TableBody({ data, columnList }: TableBodyProps) {
 							key={`${row.id}_${column}`}
 							className="px-3 py-1 whitespace-nowrap"
 						>
-							{row[column]}
+							{String(row[column])}
 						</td>
 					))}
 				</tr>
