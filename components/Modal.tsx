@@ -38,9 +38,7 @@ export default function Modal({ title, children, footer, onClose }: Props) {
 								>
 									{title}
 								</h3>
-								<div className="mt-2">
-									<p className="text-sm text-gray-500">{children}</p>
-								</div>
+								<div className="mt-2 text-sm text-gray-500">{children}</div>
 							</div>
 						</div>
 					</div>
