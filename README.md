@@ -14,6 +14,10 @@ Backlog:
 - [ ] Mint selected token
 - [ ] Display your owned tokens with Infura API
 
+Bugs:
+
+- [ ] Prevent displaying "claimed" status on details modal while loading token holders
+
 Second wave backlog:
 
 - [ ] Improve search performance with Web Workers or a search library
