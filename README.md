@@ -22,6 +22,9 @@ Second wave backlog:
 - [ ] Mobile-first layout
 - [ ] SSG build of developers list
 - [ ] Request caching with Redis
+- [ ] Display account id of token holders
+- [ ] View collection of account id
+- [ ] Open NFT on OpenSea
 
 Future ideas:
 
