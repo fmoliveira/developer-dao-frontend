@@ -12,7 +12,7 @@ Backlog:
 - [x] Connect to Metamask wallet
 - [x] Click on a token to view details
 - [ ] Mint selected token
-- [ ] Display your owned tokens with Infura API
+- [ ] Display your owned tokens
 
 Bugs:
 
