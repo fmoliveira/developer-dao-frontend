@@ -3,9 +3,10 @@ type Row = Record<string, string>;
 type Props = {
 	caption: string;
 	data: Row[];
+	onClick?: (item: any) => void;
 };
 
-export default function Table({ caption, data }: Props) {
+export default function Table({ caption, data, onClick }: Props) {
 	const firstRow = data?.[0] ?? {};
 	const columnList = Object.keys(firstRow);
 
@@ -14,7 +15,7 @@ export default function Table({ caption, data }: Props) {
 			<table className="min-w-full">
 				<caption className="sr-only">{caption}</caption>
 				<TableHeader columnList={columnList} />
-				<TableBody data={data} columnList={columnList} />
+				<TableBody data={data} columnList={columnList} onClick={onClick} />
 			</table>
 		</div>
 	);
@@ -45,13 +46,14 @@ function TableHeader({ columnList }: TableHeaderProps) {
 type TableBodyProps = {
 	data: Row[];
 	columnList: string[];
+	onClick?: (item: any) => void;
 };
 
-function TableBody({ data, columnList }: TableBodyProps) {
+function TableBody({ data, columnList, onClick }: TableBodyProps) {
 	return (
 		<tbody className="bg-white divide-y divide-gray-200">
 			{data.map((row) => (
-				<tr key={row.id}>
+				<tr key={row.id} onClick={() => onClick(row)}>
 					{columnList.map((column) => (
 						<td
 							key={`${row.id}_${column}`}
