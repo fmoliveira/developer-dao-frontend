@@ -11,7 +11,9 @@ Backlog:
 - [x] Fetch and display claimed|unclaimed status for all rows from Infura API
 - [x] Connect to Metamask wallet
 - [x] Click on a token to view details
-- [ ] Mint selected token
+- [x] Claim selected token
+- [ ] Display status of connected wallet
+- [ ] Display error when transaction is rejected
 - [ ] Display your owned tokens
 
 Bugs:
