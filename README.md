@@ -11,7 +11,7 @@ Backlog:
 - [x] Fetch and display claimed|unclaimed status for all rows from Infura API
 - [ ] Connect to Metamask wallet
 - [ ] Click on an unclaimed token to mint it
-- [ ] Display your owned tokens with OpenSea API
+- [ ] Display your owned tokens with Infura API
 
 Second wave backlog:
 
