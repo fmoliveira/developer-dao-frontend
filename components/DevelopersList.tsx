@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import useDeveloperAvailabilityList from "hooks/useDeveloperAvailabilityList";
+import useFilteredList from "hooks/useFilteredList";
 
 import Table from "./Table";
 import TextInput from "./TextInput";
@@ -31,21 +32,6 @@ export default function DevelopersList() {
 			/>
 		</>
 	);
-}
-
-function useFilteredList(data: any[] = [], filter: string) {
-	const keywordList = filter.toLowerCase().split(/[ ,;]/).filter(Boolean);
-
-	return data.filter((row) => {
-		const cellList: string[] = Object.values(row);
-
-		// a row must contain all keywords to be matched
-		return keywordList.every((keyword) => {
-			return cellList.some((cell) =>
-				String(cell).toLowerCase().includes(keyword),
-			);
-		});
-	});
 }
 
 function useCappedList(data: any[] = [], capacity: number) {
