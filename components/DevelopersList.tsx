@@ -1,21 +1,16 @@
-import { useState } from "react";
-
-import useDeveloperAvailabilityList from "hooks/useDeveloperAvailabilityList";
-import useFilteredList from "hooks/useFilteredList";
+import useDeveloperSearch from "hooks/useDeveloperSearch";
 
 import Table from "./Table";
 import TextInput from "./TextInput";
 
 export default function DevelopersList() {
-	const [filter, setFilter] = useState("");
+	const { setFilter, resultList, resultCount, visibleCount } =
+		useDeveloperSearch();
 
-	const developerList = useDeveloperAvailabilityList();
-	const filteredList = useFilteredList(developerList, filter);
-	const cappedList = useCappedList(filteredList, 100);
-	const totalResults =
-		filteredList.length !== cappedList.length
-			? `Showing first ${cappedList.length} results from a total of ${filteredList.length} matches`
-			: `Showing ${filteredList.length} matches`;
+	const resultsMessage =
+		resultCount !== visibleCount
+			? `Showing first ${visibleCount} results from a total of ${resultCount} matches`
+			: `Showing ${resultCount} matches`;
 
 	return (
 		<>
@@ -25,15 +20,11 @@ export default function DevelopersList() {
 				hint="Separate keywords with spaces, commas or semicolons"
 				onChange={setFilter}
 			/>
-			<div className="py-4">{totalResults}</div>
+			<div className="py-4">{resultsMessage}</div>
 			<Table
 				caption="List of developers by token id and attributes"
-				data={cappedList}
+				data={resultList}
 			/>
 		</>
 	);
-}
-
-function useCappedList(data: any[] = [], capacity: number) {
-	return data.slice(0, capacity);
 }
