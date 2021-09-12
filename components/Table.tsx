@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-type Row = Record<string, string>;
+type Row = Record<string, any>;
 
 type Props = {
 	caption: string;
@@ -55,7 +55,15 @@ function TableBody({ data, columnList, onClick }: TableBodyProps) {
 	return (
 		<tbody className="bg-white divide-y divide-gray-200">
 			{data.map((row) => (
-				<tr key={row.id} onClick={() => onClick(row)}>
+				<tr
+					key={row.id}
+					className={classNames(
+						"hover:bg-gray-200 cursor-pointer",
+						row.available === true && "hover:bg-green-200",
+						row.available === false && "hover:bg-red-100",
+					)}
+					onClick={() => onClick(row)}
+				>
 					{columnList.map((column) => (
 						<td
 							key={`${row.id}_${column}`}
@@ -81,7 +89,8 @@ function CellValue({ value }: CellValueProps) {
 				<span
 					className={classNames(
 						"mr-2 inline-block p-1 bg-gray-500 rounded-md",
-						value === true ? "bg-green-500" : "bg-red-500",
+						value === true && "bg-green-500",
+						value === false && "bg-red-500",
 					)}
 				/>
 				{value ? "Available" : "Claimed"}
