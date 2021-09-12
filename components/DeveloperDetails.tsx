@@ -1,3 +1,4 @@
+import DeveloperCard from "./DeveloperCard";
 import Modal from "./Modal";
 
 type Props = {
@@ -6,17 +7,6 @@ type Props = {
 	onClaim: (tokenId: string) => void;
 	onClose: () => void;
 };
-
-const attributes = [
-	"os",
-	"textEditor",
-	"clothing",
-	"language",
-	"industry",
-	"location",
-	"mind",
-	"vibe",
-];
 
 export default function DeveloperDetails({
 	token,
@@ -74,11 +64,16 @@ export default function DeveloperDetails({
 			}
 			onClose={onClose}
 		>
-			<ul>
-				{attributes.map((key) => (
-					<li key={key}>{details[key]}</li>
-				))}
-			</ul>
+			<DeveloperCard
+				os={token.os}
+				textEditor={token.textEditor}
+				clothing={token.clothing}
+				language={token.language}
+				industry={token.industry}
+				location={token.location}
+				mind={token.mind}
+				vibe={token.vibe}
+			/>
 		</Modal>
 	);
 }
