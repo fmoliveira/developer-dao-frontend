@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import Button from "components/Button";
 import CommunityLinks from "components/CommunityLinks";
 import DeveloperDetails from "components/DeveloperDetails";
 import DeveloperList from "components/DeveloperList";
@@ -8,19 +7,35 @@ import DeveloperSearch from "components/DeveloperSearch";
 
 import useDeveloperSearch from "hooks/useDeveloperSearch";
 import useWallet from "hooks/useWallet";
+import Wallet from "components/Wallet";
 
 export default function Home() {
-	const { connectWallet, claimToken } = useWallet();
+	const {
+		walletInstalled,
+		walletConnected,
+		networkName,
+		isMainNet,
+		loading,
+		connectWallet,
+		claimToken,
+	} = useWallet();
 
-	const { setFilter, developerMap, resultList, resultCount, visibleCount } =
+	const { setFilter, resultList, resultCount, visibleCount } =
 		useDeveloperSearch();
 	const [token, selectToken] = useState(null);
 
 	return (
 		<>
-			<h1 className="text-xl font-bold my-2">Developer DAO</h1>
+			<h1 className="text-xl text-center font-bold my-2">Developer DAO</h1>
 			<CommunityLinks />
-			<Button onClick={connectWallet}>Connect Wallet</Button>
+			<Wallet
+				walletInstalled={walletInstalled}
+				walletConnected={walletConnected}
+				networkName={networkName}
+				isMainNet={isMainNet}
+				loading={loading}
+				connectWallet={connectWallet}
+			/>
 			<DeveloperSearch
 				onChange={setFilter}
 				resultCount={resultCount}
@@ -30,7 +45,7 @@ export default function Home() {
 			{token && (
 				<DeveloperDetails
 					token={token}
-					details={developerMap.get(token.id)}
+					isMainNet={isMainNet}
 					onClaim={claimToken}
 					onClose={() => selectToken("")}
 				/>

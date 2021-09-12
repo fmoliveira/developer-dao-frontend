@@ -12,7 +12,7 @@ const linkList = [
 
 export default function CommunityLinks() {
 	return (
-		<nav className="py-4 flex gap-4">
+		<nav className="py-4 flex gap-4 justify-center">
 			{linkList.map(([label, url]) => (
 				<a
 					key={label}

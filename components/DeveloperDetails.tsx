@@ -3,17 +3,32 @@ import Modal from "./Modal";
 
 type Props = {
 	token: any;
-	details: any;
+	isMainNet: boolean;
 	onClaim: (tokenId: string) => void;
 	onClose: () => void;
 };
 
 export default function DeveloperDetails({
 	token,
-	details,
+	isMainNet,
 	onClaim,
 	onClose,
 }: Props) {
+	const WrongNetworkFooter = () => (
+		<div className="flex-1 flex items-center">
+			<div className="flex-1 text-red-500 font-bold">
+				Please switch to Mainnet
+			</div>
+			<button
+				type="button"
+				className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+				onClick={onClose}
+			>
+				Close
+			</button>
+		</div>
+	);
+
 	const DeveloperClaimedFooter = () => (
 		<>
 			<button
@@ -52,16 +67,17 @@ export default function DeveloperDetails({
 		</>
 	);
 
+	const developerFooter = token.available ? (
+		<DeveloperAvailableFooter />
+	) : (
+		<DeveloperClaimedFooter />
+	);
+	const networkFooter = !isMainNet ? <WrongNetworkFooter /> : developerFooter;
+
 	return (
 		<Modal
 			title={`Developer #${token.id}`}
-			footer={
-				token.available ? (
-					<DeveloperAvailableFooter />
-				) : (
-					<DeveloperClaimedFooter />
-				)
-			}
+			footer={networkFooter}
 			onClose={onClose}
 		>
 			<DeveloperCard
