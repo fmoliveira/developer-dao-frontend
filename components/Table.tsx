@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 type Row = Record<string, string>;
 
 type Props = {
@@ -59,11 +61,33 @@ function TableBody({ data, columnList, onClick }: TableBodyProps) {
 							key={`${row.id}_${column}`}
 							className="px-3 py-1 whitespace-nowrap"
 						>
-							{String(row[column])}
+							<CellValue value={row[column]} />
 						</td>
 					))}
 				</tr>
 			))}
 		</tbody>
 	);
+}
+
+type CellValueProps = {
+	value: any;
+};
+
+function CellValue({ value }: CellValueProps) {
+	if (typeof value === "boolean") {
+		return (
+			<div className="flex items-center">
+				<span
+					className={classNames(
+						"mr-2 inline-block p-1 bg-gray-500 rounded-md",
+						value === true ? "bg-green-500" : "bg-red-500",
+					)}
+				/>
+				{value ? "Available" : "Claimed"}
+			</div>
+		);
+	}
+
+	return <>{String(value)}</>;
 }
