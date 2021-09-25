@@ -32,7 +32,7 @@ function TableHeader({ columns }: TableHeaderProps) {
 				{columns.map((column) => (
 					<th
 						scope="col"
-						className="p-3 text-xs font-medium text-pink-500 uppercase tracking-wider"
+						className="p-3 text-xs font-medium text-pink-300 uppercase tracking-wider"
 						key={column}
 					>
 						{column}
