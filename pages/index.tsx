@@ -3,6 +3,7 @@ import { useState } from "react";
 import DeveloperDetails from "components/DeveloperDetails";
 import DeveloperList from "components/DeveloperList";
 import DeveloperSearch from "components/DeveloperSearch";
+import { Footer } from "components/Footer";
 import { Header } from "components/Header";
 
 import useDeveloperSearch, {
@@ -55,6 +56,7 @@ export default function Home() {
 					onClose={() => selectToken("")}
 				/>
 			)}
+			<Footer />
 		</>
 	);
 }
