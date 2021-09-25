@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { AlphaNotice } from "components/AlphaNotice";
 import DeveloperDetails from "components/DeveloperDetails";
 import DeveloperList from "components/DeveloperList";
 import DeveloperSearch from "components/DeveloperSearch";
@@ -29,6 +30,7 @@ export default function Home() {
 
 	return (
 		<>
+			<AlphaNotice />
 			<Header />
 			<Wallet
 				walletInstalled={walletInstalled}
