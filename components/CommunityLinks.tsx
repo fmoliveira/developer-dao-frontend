@@ -19,7 +19,7 @@ export default function CommunityLinks() {
 					href={url}
 					target="_blank"
 					rel="noopener noreferrer"
-					className="text-blue-500 hover:underline"
+					className="text-yellow-300 hover:text-yellow-500 hover:underline"
 				>
 					{label}
 				</a>

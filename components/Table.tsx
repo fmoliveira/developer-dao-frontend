@@ -11,7 +11,7 @@ type Props = {
 
 export default function Table({ caption, columns, data, onClick }: Props) {
 	return (
-		<div className="shadow overflow-hidden border border-gray-200 sm:rounded-lg">
+		<div className="shadow overflow-hidden border border-gray-600 sm:rounded-lg">
 			<table className="min-w-full">
 				<caption className="sr-only">{caption}</caption>
 				<TableHeader columns={columns} />
@@ -27,12 +27,12 @@ type TableHeaderProps = {
 
 function TableHeader({ columns }: TableHeaderProps) {
 	return (
-		<thead className="bg-gray-50 border-b border-gray-200">
+		<thead className="bg-gray-700 border-b border-gray-600">
 			<tr>
 				{columns.map((column) => (
 					<th
 						scope="col"
-						className="p-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+						className="p-3 text-xs font-medium text-pink-500 uppercase tracking-wider"
 						key={column}
 					>
 						{column}
@@ -51,21 +51,21 @@ type TableBodyProps = {
 
 function TableBody({ data, columns, onClick }: TableBodyProps) {
 	return (
-		<tbody className="bg-white divide-y divide-gray-200">
+		<tbody className="bg-gray-800 divide-y divide-gray-600">
 			{data.map((row) => (
 				<tr
 					key={row.id}
 					className={classNames(
-						"hover:bg-gray-200 cursor-pointer",
-						row.available === true && "hover:bg-green-200",
-						row.available === false && "hover:bg-red-100",
+						"text-gray-100 hover:bg-gray-600 cursor-pointer",
+						row.available === true && "hover:bg-green-300 hover:text-gray-800",
+						row.available === false && "hover:bg-red-300 hover:text-gray-800",
 					)}
 					onClick={() => onClick(row)}
 				>
 					{columns.map((column) => (
 						<td
 							key={`${row.id}_${column}`}
-							className="px-3 py-1 whitespace-nowrap"
+							className="px-3 py-2 whitespace-nowrap"
 						>
 							<CellValue value={row[column]} />
 						</td>

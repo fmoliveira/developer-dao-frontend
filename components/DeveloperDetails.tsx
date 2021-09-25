@@ -33,7 +33,7 @@ export default function DeveloperDetails({
 		<>
 			<button
 				type="button"
-				className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white sm:ml-3 sm:w-auto sm:text-sm opacity-50 cursor-not-allowed"
+				className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-500 text-base font-medium text-white sm:ml-3 sm:w-auto sm:text-sm opacity-50 cursor-not-allowed"
 				disabled
 			>
 				Claimed
@@ -52,7 +52,7 @@ export default function DeveloperDetails({
 		<>
 			<button
 				type="button"
-				className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
+				className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-500 text-base font-medium text-white hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
 				onClick={() => onClaim(token.id)}
 			>
 				Claim

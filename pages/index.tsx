@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import CommunityLinks from "components/CommunityLinks";
 import DeveloperDetails from "components/DeveloperDetails";
 import DeveloperList from "components/DeveloperList";
 import DeveloperSearch from "components/DeveloperSearch";
+import { Header } from "components/Header";
 
 import useDeveloperSearch, {
 	DEVELOPER_COLUMNS,
@@ -28,8 +28,7 @@ export default function Home() {
 
 	return (
 		<>
-			<h1 className="text-xl text-center font-bold my-2">Developer DAO</h1>
-			<CommunityLinks />
+			<Header />
 			<Wallet
 				walletInstalled={walletInstalled}
 				walletConnected={walletConnected}
