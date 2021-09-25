@@ -5,6 +5,19 @@ import useDeveloperList from "./useDeveloperList";
 import useDeveloperMap from "./useDeveloperMap";
 import useFilteredList from "./useFilteredList";
 
+export const DEVELOPER_COLUMNS = [
+	"id",
+	"os",
+	"textEditor",
+	"clothing",
+	"language",
+	"industry",
+	"location",
+	"mind",
+	"vibe",
+	"available",
+];
+
 export default function useDeveloperSearch() {
 	const [filter, setFilter] = useState("");
 

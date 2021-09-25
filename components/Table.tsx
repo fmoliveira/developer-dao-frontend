@@ -4,34 +4,32 @@ type Row = Record<string, any>;
 
 type Props = {
 	caption: string;
+	columns: string[];
 	data: Row[];
 	onClick?: (item: any) => void;
 };
 
-export default function Table({ caption, data, onClick }: Props) {
-	const firstRow = data?.[0] ?? {};
-	const columnList = Object.keys(firstRow);
-
+export default function Table({ caption, columns, data, onClick }: Props) {
 	return (
 		<div className="shadow overflow-hidden border border-gray-200 sm:rounded-lg">
 			<table className="min-w-full">
 				<caption className="sr-only">{caption}</caption>
-				<TableHeader columnList={columnList} />
-				<TableBody data={data} columnList={columnList} onClick={onClick} />
+				<TableHeader columns={columns} />
+				<TableBody columns={columns} data={data} onClick={onClick} />
 			</table>
 		</div>
 	);
 }
 
 type TableHeaderProps = {
-	columnList: string[];
+	columns: string[];
 };
 
-function TableHeader({ columnList }: TableHeaderProps) {
+function TableHeader({ columns }: TableHeaderProps) {
 	return (
 		<thead className="bg-gray-50 border-b border-gray-200">
 			<tr>
-				{columnList.map((column) => (
+				{columns.map((column) => (
 					<th
 						scope="col"
 						className="p-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -47,11 +45,11 @@ function TableHeader({ columnList }: TableHeaderProps) {
 
 type TableBodyProps = {
 	data: Row[];
-	columnList: string[];
+	columns: string[];
 	onClick?: (item: any) => void;
 };
 
-function TableBody({ data, columnList, onClick }: TableBodyProps) {
+function TableBody({ data, columns, onClick }: TableBodyProps) {
 	return (
 		<tbody className="bg-white divide-y divide-gray-200">
 			{data.map((row) => (
@@ -64,7 +62,7 @@ function TableBody({ data, columnList, onClick }: TableBodyProps) {
 					)}
 					onClick={() => onClick(row)}
 				>
-					{columnList.map((column) => (
+					{columns.map((column) => (
 						<td
 							key={`${row.id}_${column}`}
 							className="px-3 py-1 whitespace-nowrap"
@@ -83,6 +81,10 @@ type CellValueProps = {
 };
 
 function CellValue({ value }: CellValueProps) {
+	if (typeof value === "undefined") {
+		return <>...</>;
+	}
+
 	if (typeof value === "boolean") {
 		return (
 			<div className="flex items-center">

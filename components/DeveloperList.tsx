@@ -3,11 +3,12 @@ import useDeveloperSearch from "hooks/useDeveloperSearch";
 import Table from "./Table";
 
 type Props = {
+	columns: string[];
 	data?: any[];
 	onClick?: (token: string) => void;
 };
 
-export default function DevelopersList({ data, onClick }: Props) {
+export default function DevelopersList({ columns, data, onClick }: Props) {
 	const handleClick = (item: any) => {
 		onClick?.(item);
 	};
@@ -15,6 +16,7 @@ export default function DevelopersList({ data, onClick }: Props) {
 	return (
 		<Table
 			caption="List of developers by token id and attributes"
+			columns={columns}
 			data={data}
 			onClick={handleClick}
 		/>

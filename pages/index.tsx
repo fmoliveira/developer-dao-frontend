@@ -5,7 +5,9 @@ import DeveloperDetails from "components/DeveloperDetails";
 import DeveloperList from "components/DeveloperList";
 import DeveloperSearch from "components/DeveloperSearch";
 
-import useDeveloperSearch from "hooks/useDeveloperSearch";
+import useDeveloperSearch, {
+	DEVELOPER_COLUMNS,
+} from "hooks/useDeveloperSearch";
 import useWallet from "hooks/useWallet";
 import Wallet from "components/Wallet";
 
@@ -41,7 +43,11 @@ export default function Home() {
 				resultCount={resultCount}
 				visibleCount={visibleCount}
 			/>
-			<DeveloperList data={resultList} onClick={selectToken} />
+			<DeveloperList
+				columns={DEVELOPER_COLUMNS}
+				data={resultList}
+				onClick={selectToken}
+			/>
 			{token && (
 				<DeveloperDetails
 					token={token}
