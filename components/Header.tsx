@@ -10,7 +10,7 @@ export function Header() {
 				</Text>
 				<Text>
 					With a token you will get access to special channels on the Developer
-					DAO community, where you can connect with other builds and create
+					DAO community, where you can connect with other builders and create
 					amazing things together.
 				</Text>
 			</VStack>
