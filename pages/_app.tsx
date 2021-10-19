@@ -1,11 +1,13 @@
+import { AppProps } from "next/app";
 import Head from "next/head";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const socialBanner = `https://developerdao.vercel.app/social-banner.png`;
 const title = "Developer DAO";
 const description =
 	"Find your next Developer DAO token with your favourite attributes and available to claim!";
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<>
 			<Head>
@@ -47,7 +49,9 @@ export default function MyApp({ Component, pageProps }) {
 				<meta property="twitter:description" content={description} />
 				<meta property="twitter:image" content={socialBanner} />
 			</Head>
-			<Component {...pageProps} />
+			<ChakraProvider>
+				<Component {...pageProps} />
+			</ChakraProvider>
 		</>
 	);
 }
