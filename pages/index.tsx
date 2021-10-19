@@ -46,14 +46,12 @@ export default function Home() {
 					resultCount={resultCount}
 					visibleCount={visibleCount}
 				/>
-				{token && (
-					<DeveloperDetails
-						token={token}
-						isMainNet={isMainNet}
-						onClaim={claimToken}
-						onClose={() => selectToken("")}
-					/>
-				)}
+				<DeveloperDetails
+					token={token}
+					isMainNet={isMainNet}
+					onClaim={claimToken}
+					onClose={() => selectToken("")}
+				/>
 				<DeveloperList
 					columns={DEVELOPER_COLUMNS}
 					data={resultList}
