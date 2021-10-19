@@ -1,5 +1,4 @@
 import Head from "next/head";
-import "tailwindcss/tailwind.css";
 
 const socialBanner = `https://developerdao.vercel.app/social-banner.png`;
 const title = "Developer DAO";
@@ -48,9 +47,7 @@ export default function MyApp({ Component, pageProps }) {
 				<meta property="twitter:description" content={description} />
 				<meta property="twitter:image" content={socialBanner} />
 			</Head>
-			<div className="p-4">
-				<Component {...pageProps} />
-			</div>
+			<Component {...pageProps} />
 		</>
 	);
 }

@@ -1,4 +1,4 @@
-import classNames from "classnames";
+const classNames = (...args: string[]) => args.join(" ");
 
 type Row = Record<string, any>;
 
