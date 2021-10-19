@@ -1,6 +1,7 @@
-import classNames from "classnames";
+import { Button, Link } from "@chakra-ui/react";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 
-import Button from "./Button";
+const classNames = (...args: string[]) => args.join(" ");
 
 type Props = {
 	walletInstalled: boolean;
@@ -24,24 +25,20 @@ export default function Wallet({
 	}
 
 	return (
-		<div className="h-16 mb-4 text-center">
+		<div>
 			{!walletInstalled && (
-				<a
-					className="inline-block bg-red-700 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+				<Link
 					href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn/related"
-					target="_blank"
-					rel="noopener noreferrer"
+					isExternal
 				>
 					Install MetaMask
-				</a>
+					<ExternalLinkIcon mx="2px" />
+				</Link>
 			)}
 			{walletInstalled && !walletConnected && (
-				<button
-					className="bg-yellow-600 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded"
-					onClick={connectWallet}
-				>
+				<Button bg="orange.300" onClick={connectWallet}>
 					Connect MetaMask
-				</button>
+				</Button>
 			)}
 			{walletConnected && (
 				<div>
