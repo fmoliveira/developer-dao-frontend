@@ -1,15 +1,17 @@
 import Head from "next/head";
 import "tailwindcss/tailwind.css";
 
+const socialBanner = `https://developerdao.vercel.app/social-banner.png`;
+const title = "Developer DAO";
+const description =
+	"Find your next Developer DAO token with your favourite attributes and available to claim!";
+
 export default function MyApp({ Component, pageProps }) {
 	return (
 		<>
 			<Head>
-				<title>Developer DAO</title>
-				<meta
-					name="description"
-					content="Frontend interface for Developer DAO - Devs for Revolution."
-				/>
+				<title>{title}</title>
+				<meta name="description" content={description} />
 				<link
 					rel="apple-touch-icon"
 					sizes="180x180"
@@ -33,6 +35,18 @@ export default function MyApp({ Component, pageProps }) {
 				<meta name="application-name" content="Developer DAO" />
 				<meta name="msapplication-TileColor" content="#000000" />
 				<meta name="theme-color" content="#ffffff" />
+				{/* Open Graph / Facebook */}
+				<meta property="og:type" content="website" />
+				<meta property="og:url" content="https://www.developerdao.com/" />
+				<meta property="og:title" content={title} />
+				<meta property="og:description" content={description} />
+				<meta property="og:image" content={socialBanner} />
+				{/* Twitter */}
+				<meta property="twitter:card" content="summary_large_image" />
+				<meta property="twitter:url" content="https://www.developerdao.com/" />
+				<meta property="twitter:title" content={title} />
+				<meta property="twitter:description" content={description} />
+				<meta property="twitter:image" content={socialBanner} />
 			</Head>
 			<div className="p-4">
 				<Component {...pageProps} />
