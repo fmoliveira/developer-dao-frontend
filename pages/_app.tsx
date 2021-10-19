@@ -3,7 +3,7 @@ import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
 
 const socialBanner = `https://developerdao.vercel.app/social-banner.png`;
-const title = "Developer DAO";
+const title = "Developer Tokens";
 const description =
 	"Find your next Developer DAO token with your favourite attributes and available to claim!";
 

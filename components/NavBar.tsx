@@ -17,7 +17,7 @@ export function NavBar() {
 		>
 			<RouterLink href="/">
 				<a>
-					<Heading size="lg">Developer DAO</Heading>
+					<Heading size="lg">Developer Tokens</Heading>
 				</a>
 			</RouterLink>
 			<HStack>
