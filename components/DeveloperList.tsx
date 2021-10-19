@@ -1,6 +1,4 @@
-import useDeveloperSearch from "hooks/useDeveloperSearch";
-
-import Table from "./Table";
+import DataTable from "./DataTable";
 
 type Props = {
 	columns: string[];
@@ -14,7 +12,7 @@ export default function DevelopersList({ columns, data, onClick }: Props) {
 	};
 
 	return (
-		<Table
+		<DataTable
 			caption="List of developers by token id and attributes"
 			columns={columns}
 			data={data}
