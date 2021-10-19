@@ -1,27 +1,17 @@
-import CommunityLinks from "./CommunityLinks";
+import { Text, VStack } from "@chakra-ui/layout";
 
 export function Header() {
 	return (
-		<div className="text-center mb-8">
-			<h1 className="text-3xl text-pink-400 text-center font-bold my-2">
-				Developer DAO
-			</h1>
-			<p className="text-pink-100">
-				Unofficial frontend implementation for{" "}
-				<a
-					href="https://www.developerdao.com"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="text-pink-300 hover:text-pink-500 hover:underline"
-				>
-					Developer DAO
-				</a>
-			</p>
-			<p className="text-pink-100">
-				A community of builders who believe in collective ownership of the
-				internet
-			</p>
-			<CommunityLinks />
-		</div>
+		<VStack>
+			<Text>
+				Developer DAO is a community where you can learn about Web3 and connect
+				with other builders to create things together.
+			</Text>
+			<Text>
+				You need a Developer Token to join the DAO. On this page, you can find
+				available tokens to mint, and even filter for your favourite attributes
+				if you wish.
+			</Text>
+		</VStack>
 	);
 }

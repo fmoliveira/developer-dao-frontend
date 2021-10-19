@@ -1,17 +1,18 @@
 import { useState } from "react";
+import { VStack } from "@chakra-ui/react";
 
-import { AlphaNotice } from "components/AlphaNotice";
 import DeveloperDetails from "components/DeveloperDetails";
 import DeveloperList from "components/DeveloperList";
 import DeveloperSearch from "components/DeveloperSearch";
+import Wallet from "components/Wallet";
 import { Footer } from "components/Footer";
 import { Header } from "components/Header";
+import { Layout } from "components/Layout";
 
 import useDeveloperSearch, {
 	DEVELOPER_COLUMNS,
 } from "hooks/useDeveloperSearch";
 import useWallet from "hooks/useWallet";
-import Wallet from "components/Wallet";
 
 export default function Home() {
 	const {
@@ -29,36 +30,37 @@ export default function Home() {
 	const [token, selectToken] = useState(null);
 
 	return (
-		<>
-			<AlphaNotice />
-			<Header />
-			<Wallet
-				walletInstalled={walletInstalled}
-				walletConnected={walletConnected}
-				networkName={networkName}
-				isMainNet={isMainNet}
-				loading={loading}
-				connectWallet={connectWallet}
-			/>
-			<DeveloperSearch
-				onChange={setFilter}
-				resultCount={resultCount}
-				visibleCount={visibleCount}
-			/>
-			<DeveloperList
-				columns={DEVELOPER_COLUMNS}
-				data={resultList}
-				onClick={selectToken}
-			/>
-			{token && (
-				<DeveloperDetails
-					token={token}
+		<Layout>
+			<VStack gridGap={[4, 8]}>
+				<Header />
+				<Wallet
+					walletInstalled={walletInstalled}
+					walletConnected={walletConnected}
+					networkName={networkName}
 					isMainNet={isMainNet}
-					onClaim={claimToken}
-					onClose={() => selectToken("")}
+					loading={loading}
+					connectWallet={connectWallet}
 				/>
-			)}
-			<Footer />
-		</>
+				<DeveloperSearch
+					onChange={setFilter}
+					resultCount={resultCount}
+					visibleCount={visibleCount}
+				/>
+				{token && (
+					<DeveloperDetails
+						token={token}
+						isMainNet={isMainNet}
+						onClaim={claimToken}
+						onClose={() => selectToken("")}
+					/>
+				)}
+				<DeveloperList
+					columns={DEVELOPER_COLUMNS}
+					data={resultList}
+					onClick={selectToken}
+				/>
+				<Footer />
+			</VStack>
+		</Layout>
 	);
 }
