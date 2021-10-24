@@ -9,6 +9,7 @@ import {
 	Th,
 	Td,
 	TableCaption,
+	useColorModeValue,
 } from "@chakra-ui/react";
 
 type Row = Record<string, any>;
@@ -54,11 +55,31 @@ type TableBodyProps = {
 	onClick?: (item: any) => void;
 };
 
+const useRowBg = () => {
+	const defaultBg = useColorModeValue("gray.200", "gray.700");
+	const claimedBg = useColorModeValue("red.100", "red.500");
+	const availableBg = useColorModeValue("green.100", "green.500");
+
+	return (available) => {
+		if (typeof available === "boolean") {
+			return available ? availableBg : claimedBg;
+		}
+
+		return defaultBg;
+	};
+};
+
 function TableBody({ data, columns, onClick }: TableBodyProps) {
+	const getHoverBg = useRowBg();
+
 	return (
 		<Tbody>
 			{data.map((row) => (
-				<Tr key={row.id} onClick={() => onClick(row)}>
+				<Tr
+					key={row.id}
+					_hover={{ cursor: "pointer", bg: getHoverBg(row.available) }}
+					onClick={() => onClick(row)}
+				>
 					{columns.map((column) => (
 						<Td key={`${row.id}_${column}`}>
 							<CellValue value={row[column]} />
