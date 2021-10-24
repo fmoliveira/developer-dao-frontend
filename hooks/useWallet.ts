@@ -99,7 +99,6 @@ async function getWalletConnected() {
 	}
 
 	const accountList = await window.ethereum.request({ method: "eth_accounts" });
-	console.log({ accountList });
 	return accountList.length !== 0;
 }
 
