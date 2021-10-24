@@ -19,7 +19,7 @@ export const DEVELOPER_COLUMNS = [
 ];
 
 export default function useDeveloperSearch() {
-	const [filter, setFilter] = useState("");
+	const [filter, setFilter] = useState({ search: "", onlyAvailable: false });
 
 	const developerQuery = useDeveloperList();
 	const developerList = developerQuery.data ?? [];

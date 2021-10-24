@@ -1,5 +1,11 @@
-export default function useFilteredList(data: any[] = [], filter: string) {
-	const keywordList = filter.toLowerCase().split(/[ ,;]/).filter(Boolean);
+type Filter = {
+	search: string;
+	onlyAvailable: boolean;
+};
+
+export default function useFilteredList(data: any[] = [], filter: Filter) {
+	const loadedAvailability = typeof data[0]?.available === "boolean";
+	const keywordList = getKeywordList(filter, loadedAvailability);
 
 	return data.filter((row) => {
 		const cellList: string[] = Object.values(row);
@@ -11,4 +17,14 @@ export default function useFilteredList(data: any[] = [], filter: string) {
 			);
 		});
 	});
+}
+
+function getKeywordList(filter: Filter, loadedAvailability: boolean): string[] {
+	const keywords = filter.search.toLowerCase().split(/[ ,;]/).filter(Boolean);
+
+	if (loadedAvailability && filter.onlyAvailable) {
+		keywords.push("available");
+	}
+
+	return keywords;
 }

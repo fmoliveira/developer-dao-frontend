@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import {
+	Checkbox,
 	Container,
 	FormControl,
 	FormLabel,
@@ -9,10 +11,8 @@ import {
 	useColorModeValue,
 } from "@chakra-ui/react";
 
-import TextInput from "./TextInput";
-
 type Props = {
-	onChange: (filter: string) => void;
+	onChange: ({ search: string, onlyAvailable: boolean }) => void;
 	resultCount: number;
 	visibleCount: number;
 };
@@ -22,6 +22,13 @@ export default function DeveloperSearch({
 	resultCount,
 	visibleCount,
 }: Props) {
+	const [search, setSearch] = useState("");
+	const [onlyAvailable, setOnlyAvailable] = useState(false);
+
+	useEffect(() => {
+		onChange?.({ search, onlyAvailable });
+	}, [onChange, search, onlyAvailable]);
+
 	const bg = useColorModeValue("gray.300", "gray.700");
 
 	const resultsMessage =
@@ -41,13 +48,21 @@ export default function DeveloperSearch({
 			>
 				<FormControl>
 					<FormLabel>Search by attributes</FormLabel>
-					<Input
-						type="text"
-						onChange={(event) => onChange?.(event.target.value)}
-					/>
-					<FormHelperText>
-						Enter keywords separated by spaces or commas
-					</FormHelperText>
+					<VStack spacing={2} alignItems="flex-start">
+						<Input
+							type="text"
+							onChange={(event) => setSearch?.(event.target.value)}
+						/>
+						<FormHelperText>
+							Enter keywords separated by spaces or commas
+						</FormHelperText>
+						<Checkbox
+							colorScheme="green"
+							onChange={(ev) => setOnlyAvailable(ev.target.checked)}
+						>
+							Show only available tokens
+						</Checkbox>
+					</VStack>
 				</FormControl>
 			</Container>
 			<Text>{resultsMessage}</Text>
