@@ -23,7 +23,7 @@ export default function DeveloperSearch({
 	visibleCount,
 }: Props) {
 	const [search, setSearch] = useState("");
-	const [onlyAvailable, setOnlyAvailable] = useState(false);
+	const [onlyAvailable, setOnlyAvailable] = useState(true);
 
 	useEffect(() => {
 		onChange?.({ search, onlyAvailable });
@@ -58,6 +58,7 @@ export default function DeveloperSearch({
 						</FormHelperText>
 						<Checkbox
 							colorScheme="green"
+							defaultChecked={onlyAvailable}
 							onChange={(ev) => setOnlyAvailable(ev.target.checked)}
 						>
 							Show only available tokens
