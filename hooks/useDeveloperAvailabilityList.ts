@@ -11,8 +11,13 @@ export default function useDeveloperAvailabilityList(developerList: any[]) {
 		return developerList;
 	}
 
-	return developerList.map((developer) => ({
-		...developer,
-		available: availableTokens.data.has(developer.id),
-	}));
+	return developerList.map((developer) => {
+		const available = availableTokens.data.has(developer.id);
+
+		return {
+			...developer,
+			available,
+			availableText: available ? "Available" : "Claimed", // searchable words
+		};
+	});
 }
