@@ -13,6 +13,8 @@ import {
 
 import DeveloperCard from "./DeveloperCard";
 
+const ownerReserved = (tokenId: number) => tokenId > 7777;
+
 type Props = {
 	token: any;
 	isMainNet: boolean;
@@ -30,9 +32,9 @@ export default function DeveloperDetails({
 		return null;
 	}
 
-	const WrongNetworkFooter = () => (
+	const ErrorFooter = ({ children }: { children: string }) => (
 		<HStack>
-			<Text>Please switch to Mainnet</Text>
+			<Text>{children}</Text>
 			<Button type="button" onClick={onClose}>
 				Close
 			</Button>
@@ -65,12 +67,18 @@ export default function DeveloperDetails({
 		</HStack>
 	);
 
-	const developerFooter = token.available ? (
-		<DeveloperAvailableFooter />
-	) : (
-		<DeveloperClaimedFooter />
-	);
-	const networkFooter = !isMainNet ? <WrongNetworkFooter /> : developerFooter;
+	const DetailsFooter = () => {
+		if (!isMainNet) {
+			return <ErrorFooter>Please switch to Mainnet</ErrorFooter>;
+		}
+		if (ownerReserved(token.id)) {
+			return <ErrorFooter>Token reserved for owner</ErrorFooter>;
+		}
+		if (!token.available) {
+			return <DeveloperClaimedFooter />;
+		}
+		return <DeveloperAvailableFooter />;
+	};
 
 	return (
 		<Modal size="xl" isOpen onClose={onClose}>
@@ -90,7 +98,9 @@ export default function DeveloperDetails({
 						vibe={token.vibe}
 					/>
 				</ModalBody>
-				<ModalFooter>{networkFooter}</ModalFooter>
+				<ModalFooter>
+					<DetailsFooter />
+				</ModalFooter>
 			</ModalContent>
 		</Modal>
 	);
