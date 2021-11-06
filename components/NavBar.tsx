@@ -1,10 +1,11 @@
 import RouterLink from "next/link";
-import { Flex, Heading, HStack, useColorModeValue } from "@chakra-ui/react";
+import { Flex, HStack, useColorModeValue } from "@chakra-ui/react";
+
 import { ThemeToggleButton } from "./ThemeToggleButton";
+import { Logo } from "./Logo";
 
 export function NavBar() {
 	const bg = useColorModeValue("gray.700", "gray.900");
-	const color = useColorModeValue("white", "black");
 
 	return (
 		<Flex
@@ -17,7 +18,7 @@ export function NavBar() {
 		>
 			<RouterLink href="/">
 				<a>
-					<Heading size="lg">Developer Tokens</Heading>
+					<Logo />
 				</a>
 			</RouterLink>
 			<HStack>
