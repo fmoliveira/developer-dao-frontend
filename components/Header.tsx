@@ -1,4 +1,4 @@
-import { Container, Text, VStack } from "@chakra-ui/layout";
+import { Container, Text, HStack, VStack, Link } from "@chakra-ui/layout";
 
 export function Header() {
 	return (
@@ -13,6 +13,14 @@ export function Header() {
 					DAO community, where you can connect with other builders and create
 					amazing things together.
 				</Text>
+				<HStack pt={5}>
+					<Text>Official Developer DAO website: </Text>
+					<Link href="https://www.developerdao.com/" isExternal>
+						<Text as="span" fontWeight="bold" size="sm">
+							www.developerdao.com
+						</Text>
+					</Link>
+				</HStack>
 			</VStack>
 		</Container>
 	);
