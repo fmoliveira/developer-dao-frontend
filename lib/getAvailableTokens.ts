@@ -1,7 +1,7 @@
 import getTokenHolders from "./getTokenHolders";
 
 const MIN_TOKEN = 1;
-const MAX_TOKEN = 8000;
+const MAX_TOKEN = 7777;
 
 export default async function getAvailableTokens() {
 	const tokens = await getTokenHolders();
