@@ -23,11 +23,13 @@ type Props = {
 
 export default function DataTable({ caption, columns, data, onClick }: Props) {
 	return (
-		<Table size="sm">
-			<TableCaption>{caption}</TableCaption>
-			<TableHeader columns={columns} />
-			<TableBody columns={columns} data={data} onClick={onClick} />
-		</Table>
+		<Box overflowX="auto" maxW="full">
+			<Table size="sm">
+				<TableCaption>{caption}</TableCaption>
+				<TableHeader columns={columns} />
+				<TableBody columns={columns} data={data} onClick={onClick} />
+			</Table>
+		</Box>
 	);
 }
 
