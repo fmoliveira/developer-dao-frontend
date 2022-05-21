@@ -1,5 +1,7 @@
 # Developer DAO Frontend
 
+> Disclaimer: Mostly unmaintained because the goal of this app was to improve discovery of tokens to NFT, and all NFTs were sold out. I may come back and revamp it with a new purpose on top of the same tokens, or at least do a few tweaks to keep it for historical reasons. No promises though ;)
+
 This is an independent frontend implementation for the Developer DAO smart contract. The goal is to be able to easily find a token with the attributes you want to mint, and claim that token directly from the web app.
 
 ## Roadmap
@@ -12,7 +14,7 @@ Backlog:
 - [x] Connect to Metamask wallet
 - [x] Click on a token to view details
 - [x] Claim selected token
-- [ ] Display status of connected wallet
+- [x] Display status of connected wallet
 - [ ] Display error when transaction is rejected
 - [ ] Display your owned tokens
 
